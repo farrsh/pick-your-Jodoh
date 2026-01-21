@@ -45,6 +45,9 @@
         img1.width = 1/2 * webW;
         sound.width = 1/8 * webW;
         console.log(opt);
+        img1.onload = function() {
+            img1.style.display="block";
+        }
         if(opt==="Bahlil") {
         bahlil();
         }
@@ -55,7 +58,6 @@
     function bahlil() {
         sus.src="sus1.mp3"
         img1.src="sus1.png";
-        img1.style.display="block";
         sus.currentTime = 0;
         sus.play();
         sus.onended = function() {
@@ -75,7 +77,6 @@
     function akbar() {
         sus.src="manaTahan.mp3";
         img1.src="manaTahan.png";
-        img1.style.display="block";
         sus.currentTime=0.3;
         sus.play();
         console.log("here");
@@ -94,5 +95,6 @@
     }
     </script>
 </body>
+
 
 </html>
