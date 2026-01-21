@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Pick your jodoh</title>
+    <style>
+        #div1 {
+            margin: 10%;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            background-color: lightpink;
+            color: maroon;
+            border: 3px solid maroon;
+            border-radius: 15px;
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="sus" preload="auto"></audio>
+    <audio id="song" preload="auto"></audio>
+    <div id="div1">
+        <img id="img1" style="display: none">
+        <br>
+        <div style="display: flex" style="align-items: center;">
+        <video id="sound" src="sound.mp4" autoplay loop style="display: none"></video>
+        <a href="index.html" style="text-decoration: none;"><button id="button">Back</button></a>
+        </div>
+    </div>
+    <script>
+        const webW = window.innerWidth;
+        const img1 = document.getElementById('img1');
+        const sus = document.getElementById('sus');
+        const song = document.getElementById('song');
+        const sound = document.getElementById('sound');
+        const button = document.getElementById('button');
+        const opt = localStorage.getItem("opt");
+        button.style.display="none";
+        button.style.fontSize = 1/30 * webW + "px";
+        img1.width = 1/2 * webW;
+        sound.width = 1/8 * webW;
+        console.log(opt);
+        if(opt==="Bahlil") {
+        bahlil();
+        }
+        else if(opt==="Akbar") {
+            akbar();
+        }
+
+    function bahlil() {
+        sus.src="sus1.mp3"
+        img1.src="sus1.png";
+        img1.style.display="block";
+        sus.currentTime = 0;
+        sus.play();
+        sus.onended = function() {
+        sus.src="sus2.mp3"
+        img1.src="sus2.png"
+        sus.currentTime = 0;
+        sus.play();
+        sus.onended = function() {
+        img1.src="raniBahlil.png";
+        song.src="song2.mp3";
+        songPlay();
+        }
+        return;
+        }
+    }
+
+    function akbar() {
+        sus.src="manaTahan.mp3";
+        img1.src="manaTahan.png";
+        img1.style.display="block";
+        sus.currentTime=0.3;
+        sus.play();
+        console.log("here");
+        sus.onended = function() {
+            img1.src="raniAkbar.png";
+            song.src="song1.mp3";
+            songPlay();
+        }
+    }
+
+    function songPlay() {
+        button.style.display="block";
+        song.currentTime=0;
+        song.play();
+        sound.style.display="block";
+    }
+    </script>
+</body>
+
+</html>
